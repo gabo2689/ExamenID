@@ -8,7 +8,10 @@ namespace Domino.Logic
         {
             this.Head = tileHead;
             this.Tail = tileTail;
+            IsDouble = false;
         }
+
+        public bool IsDouble { get; set; }
 
         public int Head { get; set; }
 

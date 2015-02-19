@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domino.Logic
 {
-    class Board
+    public class Board
     {
     }
 }

@@ -30,3 +30,4 @@ Scenario: Shuffle Tiles
 	| 0		    | 4         |
 	| 3			| 5			|
 	| 1		    | 4			|
+

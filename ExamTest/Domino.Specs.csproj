@@ -59,11 +59,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Player1.feature.cs">
+    <Compile Include="Game.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Player.feature</DependentUpon>
+      <DependentUpon>Game.feature</DependentUpon>
     </Compile>
+    <Compile Include="GameSteps.cs" />
     <Compile Include="Stack.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,6 +76,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Game.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Game.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Player.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
