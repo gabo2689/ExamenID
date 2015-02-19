@@ -1,4 +1,5 @@
-﻿using Domino.Logic.Interfaces;
+﻿using System.Linq;
+using Domino.Logic.Interfaces;
 using System.Collections.Generic;
 
 namespace Domino.Logic
@@ -46,6 +47,13 @@ namespace Domino.Logic
             }
         }
 
+        public Tile PopFromStock()
+        {
+            var tile = Tiles.ElementAt(0);
+            Tiles.RemoveAt(0);
+            return tile;
+        }
+        
         private void SwapTilesRandomly()
         {
             int posTile1 = _random.GetRandomPosition();
@@ -55,5 +63,6 @@ namespace Domino.Logic
             Tiles[posTile1] = Tiles[posTile2];
             Tiles[posTile2] = temp;
         }
+
     }
 }
