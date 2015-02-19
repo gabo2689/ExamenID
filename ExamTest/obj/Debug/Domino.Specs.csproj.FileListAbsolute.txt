@@ -1,0 +1,11 @@
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\bin\Debug\ExamTest.dll.config
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\bin\Debug\ExamTest.dll
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\bin\Debug\ExamTest.pdb
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\bin\Debug\nunit.framework.dll
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\bin\Debug\Rhino.Mocks.dll
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\bin\Debug\TechTalk.SpecFlow.dll
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\bin\Debug\nunit.framework.xml
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\bin\Debug\Rhino.Mocks.xml
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\obj\Debug\Domino.Specs.csprojResolveAssemblyReference.cache
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\obj\Debug\ExamTest.dll
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\ExamTest\obj\Debug\ExamTest.pdb

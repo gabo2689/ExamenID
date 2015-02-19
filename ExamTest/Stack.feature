@@ -7,3 +7,5 @@
 Scenario: Stack is Empty
 	Given I have 0 tiles
 	Then the result should be 0 on the screen
+
+Scenario: Generate tiles for Stack

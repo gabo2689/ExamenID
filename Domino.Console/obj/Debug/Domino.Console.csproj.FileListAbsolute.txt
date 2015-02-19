@@ -1,0 +1,6 @@
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\Domino.Console\bin\Debug\Domino.Console.exe.config
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\Domino.Console\bin\Debug\Domino.Console.exe
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\Domino.Console\bin\Debug\Domino.Console.pdb
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\Domino.Console\obj\Debug\Domino.Console.csprojResolveAssemblyReference.cache
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\Domino.Console\obj\Debug\Domino.Console.exe
+C:\Users\Erick\documents\visual studio 2013\Projects\ExamTest\Domino.Console\obj\Debug\Domino.Console.pdb
