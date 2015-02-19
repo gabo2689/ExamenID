@@ -15,6 +15,13 @@ namespace Domino.Logic
         public Board Board { get; set; }
         public Stock Stock { get; set; }
 
+        public Game()
+        {
+            var random = new Random();
+            Board=new Board();
+            Stock=new Stock(new RandomNumber());
+            Players=new List<IPlayer>();
+        }
         public void AddNewPlayer(IPlayer newPlayer)
         {
             Players.Add(newPlayer);
@@ -45,24 +52,21 @@ namespace Domino.Logic
 
         private void InitializeTurns()
         {
-            var highestTile = 0;
-            var position = 0;
+            var turn = 0;
+            var highestTile = new Tile(-1,-1);
+            
             for (var i = 0; i < Players.Count; i++)
             {
                 var tile = Players.ElementAt(i).GetHighestDouble();
                 if (tile.IsDouble)
                 {
-                    
-
+                    if(tile.Head>highestTile.Head)
+                        highestTile = tile;
                 }
-                    
                 else
                 {
                     
                 }
-
-
-
             }
         }
     }

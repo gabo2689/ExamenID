@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Domino.Logic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TechTalk.SpecFlow;
 
 namespace ExamTest
@@ -25,15 +27,16 @@ public void GivenThePlayersHaveAnEmptyHand()
 
         [When(@"the game begins and the players takes (.*) tiles")]
 public void WhenTheGameBeginsAndThePlayersTakesTiles(int p0)
-        {
+{
             _game.InitializePlayersHand(p0);
-    ScenarioContext.Current.Pending();
 }
 
         [Then(@"the two players must have (.*) tiles each")]
 public void ThenTheTwoPlayersMustHaveTilesEach(int p0)
-{
-    ScenarioContext.Current.Pending();
-}
+        {
+            var player1Tiles = _game.Players.ElementAt(0).Hand.Count;
+            var player2Tiles = _game.Players.ElementAt(1).Hand.Count;
+            Assert.AreEqual(p0,player1Tiles,player2Tiles);
+        }
     }
 }
