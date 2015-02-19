@@ -18,8 +18,7 @@ namespace ExamTest
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Stack")]
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
     public partial class StackFeature
     {
         
@@ -28,8 +27,8 @@ namespace ExamTest
 #line 1 "Stack.feature"
 #line hidden
         
-        [NUnit.Framework.TestFixtureSetUpAttribute()]
-        public virtual void FeatureSetup()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
+        public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Stack", "In order to avoid silly mistakes\nAs a math idiot\nI want to be told the sum of two" +
@@ -37,19 +36,24 @@ namespace ExamTest
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [NUnit.Framework.TestFixtureTearDownAttribute()]
-        public virtual void FeatureTearDown()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
+        public static void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
-        [NUnit.Framework.SetUpAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
+            if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
+                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Stack")))
+            {
+                ExamTest.StackFeature.FeatureSetup(null);
+            }
         }
         
-        [NUnit.Framework.TearDownAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -65,30 +69,86 @@ namespace ExamTest
             testRunner.CollectScenarioErrors();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Stack is Empty")]
-        [NUnit.Framework.CategoryAttribute("mytag")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Stack is Empty")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Stack")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         public virtual void StackIsEmpty()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Stack is Empty", new string[] {
                         "mytag"});
 #line 7
 this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Tile Head",
+                        "Tile Tail"});
 #line 8
- testRunner.Given("I have 0 tiles", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
+ testRunner.Given("the following tiles", ((string)(null)), table1, "Given ");
+#line 12
  testRunner.Then("the result should be 0 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Generate tiles for Stack")]
-        public virtual void GenerateTilesForStack()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Shuffle Tiles")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Stack")]
+        public virtual void ShuffleTiles()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate tiles for Stack", ((string[])(null)));
-#line 11
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shuffle Tiles", ((string[])(null)));
+#line 14
 this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Tile Head",
+                        "Tile Tail"});
+            table2.AddRow(new string[] {
+                        "0",
+                        "0"});
+            table2.AddRow(new string[] {
+                        "0",
+                        "3"});
+            table2.AddRow(new string[] {
+                        "0",
+                        "4"});
+            table2.AddRow(new string[] {
+                        "1",
+                        "1"});
+            table2.AddRow(new string[] {
+                        "1",
+                        "4"});
+            table2.AddRow(new string[] {
+                        "3",
+                        "5"});
+#line 15
+ testRunner.Given("the following Random Stack exist", ((string)(null)), table2, "Given ");
+#line 23
+ testRunner.When("Randoms tiles are generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Tile Head",
+                        "Tile Tail"});
+            table3.AddRow(new string[] {
+                        "0",
+                        "3"});
+            table3.AddRow(new string[] {
+                        "0",
+                        "0"});
+            table3.AddRow(new string[] {
+                        "1",
+                        "1"});
+            table3.AddRow(new string[] {
+                        "0",
+                        "4"});
+            table3.AddRow(new string[] {
+                        "3",
+                        "5"});
+            table3.AddRow(new string[] {
+                        "1",
+                        "4"});
+#line 25
+ testRunner.Then("the following tiles appear", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
