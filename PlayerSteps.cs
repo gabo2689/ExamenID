@@ -17,11 +17,5 @@ public void WhenIPressAdd()
 {
     ScenarioContext.Current.Pending();
 }
-
-        [Then(@"the result should be (.*) on the screen")]
-public void ThenTheResultShouldBeOnTheScreen(int p0)
-{
-    ScenarioContext.Current.Pending();
-}
     }
 }
