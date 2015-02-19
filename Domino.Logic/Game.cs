@@ -45,10 +45,17 @@ namespace Domino.Logic
 
         private void InitializeTurns()
         {
-            var playerStartPosition = 0;
+            var playerStartPosition = GetPlayerInitial();
+
+
+        }
+
+        private int GetPlayerInitial()
+        {
+            var playerInicialStartPosition = 0;
             var HightTileScorePlayer = new Tile(-1, -1);
             bool isDoublePieces = false;
-            
+
             for (var i = 0; i < Players.Count; i++)
             {
                 var tile = Players.ElementAt(i).GetHighestDouble();
@@ -56,32 +63,28 @@ namespace Domino.Logic
                 {
                     if (tile.Head > HightTileScorePlayer.Head && tile.Tail > HightTileScorePlayer.Tail)
                     {
-                        playerStartPosition = i;
+                        playerInicialStartPosition = i;
                         HightTileScorePlayer = tile;
                     }
 
                     isDoublePieces = true;
                 }
-                 else
+                else
                 {
-                   if(!isDoublePieces)
-                   {
-                       var sum1 = tile.Head + tile.Tail;
-                       var sum2 = HightTileScorePlayer.Head + HightTileScorePlayer.Tail;
+                    if (!isDoublePieces)
+                    {
+                        var sum1 = tile.Head + tile.Tail;
+                        var sum2 = HightTileScorePlayer.Head + HightTileScorePlayer.Tail;
 
-                       if (sum1 > sum2)
-                       {
-                           playerStartPosition = i;
-                           HightTileScorePlayer = tile;
-                       }
-
-
-                   }
+                        if (sum1 > sum2)
+                        {
+                            playerInicialStartPosition = i;
+                            HightTileScorePlayer = tile;
+                        }
+                    }
                 }
-
-                
-
             }
+            return playerInicialStartPosition;
         }
     }
 }
