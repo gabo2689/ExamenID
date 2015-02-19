@@ -1,11 +1,12 @@
-﻿using Domino.Logic.Interfaces;
+﻿using System.Linq;
+using Domino.Logic.Interfaces;
 using System.Collections.Generic;
 
 namespace Domino.Logic
 {
-    public class Stock
+    public class Stock : IStock
     {
-        private IRandom _random;
+        private readonly IRandom _random;
 
         public Stock(IRandom random)
         {
@@ -29,6 +30,8 @@ namespace Domino.Logic
                 for (int tailValue = headValue; tailValue <= maxValue; tailValue++)
                 {
                     var currentTile = new Tile(headValue, tailValue);
+                    if (headValue == tailValue)
+                        currentTile.IsDouble = true;
                     initialTiles.Add(currentTile);
                 }
             }
@@ -46,7 +49,14 @@ namespace Domino.Logic
             }
         }
 
-        private void SwapTilesRandomly()
+        public Tile PopFromStock()
+        {
+            var tile = Tiles.ElementAt(0);
+            Tiles.RemoveAt(0);
+            return tile;
+        }
+
+        public void SwapTilesRandomly()
         {
             int posTile1 = _random.GetRandomPosition();
             int posTile2 = _random.GetRandomPosition();
@@ -55,5 +65,6 @@ namespace Domino.Logic
             Tiles[posTile1] = Tiles[posTile2];
             Tiles[posTile2] = temp;
         }
+
     }
 }
