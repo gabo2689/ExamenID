@@ -3,7 +3,6 @@
 	As a math idiot
 	I want to be told the sum of two numbers
 
-
 @mytagxs
 Scenario: When the player one get one tile from stock
 	Given the list from stock exist from board
@@ -18,5 +17,4 @@ Scenario: When the player one get one tile from stock
 	| 3      | 0    |
 	| 5      | 2    |
 	| 4      | 1    |
-
 

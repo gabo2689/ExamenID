@@ -72,29 +72,81 @@ namespace ExamTest
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Stack is Empty")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Stack")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         public virtual void StackIsEmpty()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Stack is Empty", new string[] {
-                        "mytag"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Stack is Empty", ((string[])(null)));
+#line 6
 this.ScenarioSetup(scenarioInfo);
-#line 8
- testRunner.Given("I have 0 tiles", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 9
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Tile Head",
+                        "Tile Tail"});
+#line 7
+ testRunner.Given("the following tiles", ((string)(null)), table1, "Given ");
+#line 11
  testRunner.Then("the result should be 0 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Generate tiles for Stack")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Shuffle Tiles")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Stack")]
-        public virtual void GenerateTilesForStack()
+        public virtual void ShuffleTiles()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Generate tiles for Stack", ((string[])(null)));
-#line 11
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shuffle Tiles", ((string[])(null)));
+#line 13
 this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Tile Head",
+                        "Tile Tail"});
+            table2.AddRow(new string[] {
+                        "0",
+                        "0"});
+            table2.AddRow(new string[] {
+                        "0",
+                        "3"});
+            table2.AddRow(new string[] {
+                        "0",
+                        "4"});
+            table2.AddRow(new string[] {
+                        "1",
+                        "1"});
+            table2.AddRow(new string[] {
+                        "1",
+                        "4"});
+            table2.AddRow(new string[] {
+                        "3",
+                        "5"});
+#line 14
+ testRunner.Given("the following Random Stack exist", ((string)(null)), table2, "Given ");
+#line 22
+ testRunner.When("Randoms tiles are generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Tile Head",
+                        "Tile Tail"});
+            table3.AddRow(new string[] {
+                        "0",
+                        "3"});
+            table3.AddRow(new string[] {
+                        "0",
+                        "0"});
+            table3.AddRow(new string[] {
+                        "1",
+                        "1"});
+            table3.AddRow(new string[] {
+                        "0",
+                        "4"});
+            table3.AddRow(new string[] {
+                        "3",
+                        "5"});
+            table3.AddRow(new string[] {
+                        "1",
+                        "4"});
+#line 24
+ testRunner.Then("the following tiles appear", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

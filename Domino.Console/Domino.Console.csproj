@@ -51,6 +51,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domino.Logic\Domino.Logic.csproj">
+      <Project>{E4CD3D3F-A664-4EFC-A5FB-09F46ADFEB52}</Project>
+      <Name>Domino.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
