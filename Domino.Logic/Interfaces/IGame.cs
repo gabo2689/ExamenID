@@ -8,5 +8,6 @@ namespace Domino.Logic.Interfaces
         int PlayerTurn { get; set; }
         Board Board { get; set; }
         Stock Stock { get; set; }
+        Player GetPlayerAtPosition(int position);
     }
 }

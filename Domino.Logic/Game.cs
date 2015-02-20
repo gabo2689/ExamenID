@@ -14,6 +14,13 @@ namespace Domino.Logic
         public int PlayerTurn { get; set; }
         public Board Board { get; set; }
         public Stock Stock { get; set; }
+        
+        public Player GetPlayerAtPosition(int position)
+        {
+            if(position<GetPlayerCount())
+                return (Player) Players.ElementAt(position);
+            return null;
+        }
 
         public Game()
         {
@@ -22,6 +29,7 @@ namespace Domino.Logic
             Stock=new Stock(new RandomNumber());
             Players=new List<IPlayer>();
         }
+
         public void AddNewPlayer(IPlayer newPlayer)
         {
             Players.Add(newPlayer);
@@ -53,16 +61,16 @@ namespace Domino.Logic
         private void InitializeTurns()
         {
 
-            var playerStartPosition = GetPlayerInitial();
+            PlayerTurn = GetPlayerInitial();
 
 
         }
 
-        private int GetPlayerInitial()
+        public int GetPlayerInitial()
         {
             var playerInicialStartPosition = 0;
-            var HightTileScorePlayer = new Tile(-1, -1);
-            bool isDoublePieces = false;
+            var hightTileScorePlayer = new Tile(-1, -1);
+            var isDoublePieces = false;
 
 
             for (var i = 0; i < Players.Count; i++)
@@ -71,10 +79,10 @@ namespace Domino.Logic
                 if (tile.IsDouble)
                 {
 
-                    if (tile.Head > HightTileScorePlayer.Head && tile.Tail > HightTileScorePlayer.Tail)
+                    if (tile.Head > hightTileScorePlayer.Head && tile.Tail > hightTileScorePlayer.Tail)
                     {
                         playerInicialStartPosition = i;
-                        HightTileScorePlayer = tile;
+                        hightTileScorePlayer = tile;
                     }
 
                     isDoublePieces = true;
@@ -84,12 +92,12 @@ namespace Domino.Logic
                     if (!isDoublePieces)
                     {
                         var sum1 = tile.Head + tile.Tail;
-                        var sum2 = HightTileScorePlayer.Head + HightTileScorePlayer.Tail;
+                        var sum2 = hightTileScorePlayer.Head + hightTileScorePlayer.Tail;
 
                         if (sum1 > sum2)
                         {
                             playerInicialStartPosition = i;
-                            HightTileScorePlayer = tile;
+                            hightTileScorePlayer = tile;
                         }
                     }
 

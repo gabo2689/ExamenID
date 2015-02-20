@@ -96,6 +96,8 @@ this.ScenarioSetup(scenarioInfo);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The game starts and one player has to start playing", ((string[])(null)));
 #line 10
 this.ScenarioSetup(scenarioInfo);
+#line 11
+ testRunner.Given("a brand new game is about to start", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tile Head",
@@ -117,9 +119,9 @@ this.ScenarioSetup(scenarioInfo);
                         "4"});
             table1.AddRow(new string[] {
                         "6",
-                        "6"});
-#line 11
- testRunner.Given("the player one has the next set of tiles", ((string)(null)), table1, "Given ");
+                        "5"});
+#line 12
+ testRunner.When("the player one has the next set of tiles", ((string)(null)), table1, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tile Head",
@@ -140,12 +142,12 @@ this.ScenarioSetup(scenarioInfo);
                         "1",
                         "4"});
             table2.AddRow(new string[] {
-                        "3",
-                        "5"});
-#line 19
- testRunner.When("the player two has the highest double", ((string)(null)), table2, "When ");
-#line 27
- testRunner.Then("the player 1 has to start the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                        "6",
+                        "6"});
+#line 20
+ testRunner.And("the player two has the next set of tiles the highest double", ((string)(null)), table2, "And ");
+#line 28
+ testRunner.Then("the player \"2\" has to start the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
