@@ -36,7 +36,7 @@ namespace ExamTest
 
             random.Stub(x => x.GetRandomPosition()).Do((randomFunction));
 
-            _stock = new Stock(random, TestUtility.ConvertTilesTableToListTiles(table));
+            //_stock = new Stock(random, TestUtility.ConvertTilesTableToListTiles(table));
         }
 
         [When(@"Randoms tiles are generated")]
@@ -54,7 +54,7 @@ namespace ExamTest
         [Then(@"the following tiles appear")]
         public void ThenTheFollowingTilesAppear(Table table)
         {
-            List<Tile> expectedTiles = TestUtility.ConvertTilesTableToListTiles(table);
+            List<Domino.Logic.Tile> expectedTiles = TestUtility.ConvertTilesTableToListTiles(table);
             CollectionAssert.AreEqual(expectedTiles, _stock.Tiles);
         }
 

@@ -65,6 +65,12 @@
       <DependentUpon>Game.feature</DependentUpon>
     </Compile>
     <Compile Include="GameSteps.cs" />
+    <Compile Include="Player1.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Player.feature</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerSteps.cs" />
     <Compile Include="Stack.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
