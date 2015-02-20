@@ -25,3 +25,8 @@ Scenario: The game starts and one player has to start playing
 	| 1			| 4			|
 	| 3		    | 5			|
 	Then the player 1 has to start the game 
+
+Scenario: When we put a tile, the tile can swap if needed
+	Given  a tile with 3 in head  and 5 in tail
+	When  we call swap
+	Then  the tile will have 5 in head and 3 in tail

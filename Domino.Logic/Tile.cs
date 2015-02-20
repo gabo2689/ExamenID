@@ -10,12 +10,19 @@ namespace Domino.Logic
             this.Tail = tileTail;
             IsDouble = false;
         }
-
+        
         public bool IsDouble { get; set; }
-
         public int Head { get; set; }
-
         public int Tail { get; set; }
+        public bool HeadTaked { get; set; }
+        public bool TailTaked { get; set; }
+
+        public void Swap()
+        {
+            var temp = Head;
+            Head = Tail;
+            Tail = temp;
+        }
 
         public int CompareTo(object obj)
         {
