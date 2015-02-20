@@ -9,5 +9,8 @@ namespace Domino.Logic.Interfaces
         Board Board { get; set; }
         Stock Stock { get; set; }
         Player GetPlayerAtPosition(int position);
+
+        void Move(int positionHand, int positionBoard);
+        bool VerifyMove(int positionHand, int positionBoard);
     }
 }

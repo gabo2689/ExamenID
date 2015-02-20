@@ -84,4 +84,13 @@ Scenario: The game starts and Player1 has to start playing because he has the mo
 	| 1		    | 6         |
 	| 1			| 4			|
 	| 1		    | 5			|
+	| 3		    | 5			|
 	Then the player "2" has to start the game
+
+Scenario: When we put a tile, the tile can swap if needed
+	Given  a tile with 3 in head  and 5 in tail
+	When  we call swap
+	Then  the tile will have 5 in head and 3 in tail
+
+
+
