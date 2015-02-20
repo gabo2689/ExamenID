@@ -52,22 +52,50 @@ namespace Domino.Logic
 
         private void InitializeTurns()
         {
-            var turn = 0;
-            var highestTile = new Tile(-1,-1);
-            
+
+            var playerStartPosition = GetPlayerInitial();
+
+
+        }
+
+        private int GetPlayerInitial()
+        {
+            var playerInicialStartPosition = 0;
+            var HightTileScorePlayer = new Tile(-1, -1);
+            bool isDoublePieces = false;
+
+
             for (var i = 0; i < Players.Count; i++)
             {
                 var tile = Players.ElementAt(i).GetHighestDouble();
                 if (tile.IsDouble)
                 {
-                    if(tile.Head>highestTile.Head)
-                        highestTile = tile;
+
+                    if (tile.Head > HightTileScorePlayer.Head && tile.Tail > HightTileScorePlayer.Tail)
+                    {
+                        playerInicialStartPosition = i;
+                        HightTileScorePlayer = tile;
+                    }
+
+                    isDoublePieces = true;
                 }
                 else
                 {
-                    
+                    if (!isDoublePieces)
+                    {
+                        var sum1 = tile.Head + tile.Tail;
+                        var sum2 = HightTileScorePlayer.Head + HightTileScorePlayer.Tail;
+
+                        if (sum1 > sum2)
+                        {
+                            playerInicialStartPosition = i;
+                            HightTileScorePlayer = tile;
+                        }
+                    }
+
                 }
             }
+            return playerInicialStartPosition;
         }
     }
 }

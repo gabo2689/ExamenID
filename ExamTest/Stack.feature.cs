@@ -72,20 +72,18 @@ namespace ExamTest
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Stack is Empty")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Stack")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
         public virtual void StackIsEmpty()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Stack is Empty", new string[] {
-                        "mytag"});
-#line 7
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Stack is Empty", ((string[])(null)));
+#line 6
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tile Head",
                         "Tile Tail"});
-#line 8
+#line 7
  testRunner.Given("the following tiles", ((string)(null)), table1, "Given ");
-#line 12
+#line 11
  testRunner.Then("the result should be 0 on the screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -97,7 +95,7 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void ShuffleTiles()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Shuffle Tiles", ((string[])(null)));
-#line 14
+#line 13
 this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -121,9 +119,9 @@ this.ScenarioSetup(scenarioInfo);
             table2.AddRow(new string[] {
                         "3",
                         "5"});
-#line 15
+#line 14
  testRunner.Given("the following Random Stack exist", ((string)(null)), table2, "Given ");
-#line 23
+#line 22
  testRunner.When("Randoms tiles are generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -147,7 +145,7 @@ this.ScenarioSetup(scenarioInfo);
             table3.AddRow(new string[] {
                         "1",
                         "4"});
-#line 25
+#line 24
  testRunner.Then("the following tiles appear", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
