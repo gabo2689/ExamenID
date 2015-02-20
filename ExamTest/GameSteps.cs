@@ -68,6 +68,13 @@ public void ThenTheTwoPlayersMustHaveTilesEach(int p0)
             Assert.AreEqual(p0,_game.GetPlayerInitial()+1);
         }
 
+        [When(@"the player two has the next set of tiles")]
+        public void WhenThePlayerTwoHasTheNextSetOfTiles(Table table)
+        {
+            _game.GetPlayerAtPosition(1).Hand = TestUtility.ConvertTilesTableToListTiles(table);
+        }
+
+
     }
 
 
