@@ -8,7 +8,9 @@ namespace Domino.Logic
 {
     public class Board
     {
-        public Tile[] Tiles = new Tile[28];
+        public static int AmountTiles = 28;
+        public Tile[] Tiles = new Tile[AmountTiles];
+
         public int TilesAmount { set; get; }
 
         public void AddTile(int position, Tile tile)
