@@ -1,5 +1,5 @@
 ﻿Feature: Game
-
+	
 @mytag
 Scenario: The game starts and the players take their tiles
 	Given the players have an empty hand
@@ -93,4 +93,25 @@ Scenario: When we put a tile, the tile can swap if needed
 	Then  the tile will have 5 in head and 3 in tail
 
 
-
+Scenario: The player1 move one tile to the board and then is the turn of the player2
+	Given a game started 
+	When the player one has the next set of tiles
+	| Tile Head | Tile Tail |
+	| 0		    | 1			|
+	| 0         | 6		    |
+	| 0			| 5			|
+	| 1		    | 3         |
+	| 5			| 6			|
+	| 0		    | 2 		|
+	| 1		    | 2 		|
+	And the player two has the next set of tiles
+	| Tile Head | Tile Tail |
+	| 0		    | 4			|
+	| 1         | 4		    |
+	| 1			| 5			|
+	| 1		    | 6         |
+	| 2			| 5			|
+	| 2		    | 4			|
+	| 2		    | 3			|
+	And the player one move a tile to the board 
+	Then is the turn of the player 2 

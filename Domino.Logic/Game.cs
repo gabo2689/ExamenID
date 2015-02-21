@@ -10,6 +10,7 @@ namespace Domino.Logic
     public class Game : IGame
     {
         private const int AmountOfPlayerTiles = 7;
+        private const int AmountOfGameTiles = 28;
         public List<IPlayer> Players { get; set; }
         public int PlayerTurn { get; set; }
         public Board Board { get; set; }
@@ -28,6 +29,7 @@ namespace Domino.Logic
             Board=new Board();
             Stock=new Stock(new RandomNumber());
             Players=new List<IPlayer>();
+            ResetGame();
         }
 
         public void AddNewPlayer(IPlayer newPlayer)
@@ -38,7 +40,7 @@ namespace Domino.Logic
         public void InitializePlayersHand(int amountOfTilesForEachPlayer)
         {
             foreach (var player in Players)
-            {
+            {   
                 for (var i = 0; i < amountOfTilesForEachPlayer; i++)
                 {
                     player.AddTileToHand(Stock.PopFromStock());
@@ -47,15 +49,22 @@ namespace Domino.Logic
             
         }
 
+        public void InitializeBoard()
+        {
+            Board.Initialize();
+            Board.AddTile(AmountOfGameTiles/2, Stock.PopFromStock());
+        }
+
         public int GetPlayerCount()
         {
             return Players.Count;
         }
 
-        public void ResetGame(IPlayer player)
+        public void ResetGame()
         {
             InitializePlayersHand(AmountOfPlayerTiles);
             InitializeTurns();
+            InitializeBoard();
         }
 
         private void InitializeTurns()
@@ -69,8 +78,8 @@ namespace Domino.Logic
         {
             if (VerifyMove(positionHand, positionBoard))
             {
-                Board.AddTile(positionBoard, Players.ElementAt(PlayerTurn - 1).Hand.ElementAt(positionHand));
-                Players.ElementAt(PlayerTurn - 1).Hand.RemoveAt(positionHand);
+                Board.AddTile(positionBoard, Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand));
+                Players.ElementAt(PlayerTurn).Hand.RemoveAt(positionHand);
                 NextPlayerTurn();
             }
         }

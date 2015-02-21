@@ -68,6 +68,54 @@ namespace ExamTest
         {
             testRunner.CollectScenarioErrors();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When the player one get one tile from stock")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Player")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytagxs")]
+        public virtual void WhenThePlayerOneGetOneTileFromStock()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When the player one get one tile from stock", new string[] {
+                        "mytagxs"});
+#line 7
+this.ScenarioSetup(scenarioInfo);
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "header",
+                        "tail"});
+            table1.AddRow(new string[] {
+                        "4",
+                        "4"});
+            table1.AddRow(new string[] {
+                        "3",
+                        "2"});
+            table1.AddRow(new string[] {
+                        "2",
+                        "1"});
+#line 8
+ testRunner.Given("the list from stock exist from board", ((string)(null)), table1, "Given ");
+#line 13
+ testRunner.And("the player get 1 tile from stock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 14
+ testRunner.Then("remove 1 tile from stock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "header",
+                        "tail"});
+            table2.AddRow(new string[] {
+                        "3",
+                        "0"});
+            table2.AddRow(new string[] {
+                        "5",
+                        "2"});
+            table2.AddRow(new string[] {
+                        "4",
+                        "1"});
+#line 15
+ testRunner.And("add 1 tile to player list", ((string)(null)), table2, "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

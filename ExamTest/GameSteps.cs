@@ -94,9 +94,30 @@ namespace ExamTest
                 Assert.AreEqual(areEquals, true);
             }
 
+            [Given(@"a game started")]
+            public void GivenAGameStarted()
+            {
+                _game = new Game();
+                _game.AddNewPlayer(_player1);
+                _game.AddNewPlayer(_player2);
+                _game.Board.Tiles.ElementAt(10).Head = 2;
+                _game.Board.Tiles.ElementAt(10).Tail = 2;
+            }
+
+            [When(@"the player one move a tile to the board")]
+            public void WhenThePlayerOneMoveATileToTheBoard()
+            {
+               _game.Move(5,9);
+            }
+
+
+            [Then(@"is the turn of the player (.*)")]
+            public void ThenIsTheTurnOfThePlayer(int p0)
+            {
+                Assert.AreEqual(p0,_game.PlayerTurn+1);
+            }
 
         }
-
 
 }
 
