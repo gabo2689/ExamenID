@@ -379,6 +379,8 @@ this.ScenarioSetup(scenarioInfo);
 this.ScenarioSetup(scenarioInfo);
 #line 97
  testRunner.Given("a game started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 98
+ testRunner.And("a started board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tile Head",
@@ -404,7 +406,7 @@ this.ScenarioSetup(scenarioInfo);
             table9.AddRow(new string[] {
                         "1",
                         "2"});
-#line 98
+#line 99
  testRunner.When("the player one has the next set of tiles", ((string)(null)), table9, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -431,12 +433,63 @@ this.ScenarioSetup(scenarioInfo);
             table10.AddRow(new string[] {
                         "2",
                         "3"});
-#line 107
+#line 108
  testRunner.And("the player two has the next set of tiles", ((string)(null)), table10, "And ");
-#line 116
- testRunner.And("the player one move a tile to the board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 117
+ testRunner.And("the player one move a tile to the board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 118
  testRunner.Then("is the turn of the player 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When Player one doesnt have compatible tile and he has less tiles than the Player" +
+            " two and the stock isEmpty he win")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        public virtual void WhenPlayerOneDoesntHaveCompatibleTileAndHeHasLessTilesThanThePlayerTwoAndTheStockIsEmptyHeWin()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When Player one doesnt have compatible tile and he has less tiles than the Player" +
+                    " two and the stock isEmpty he win", ((string[])(null)));
+#line 120
+ this.ScenarioSetup(scenarioInfo);
+#line 121
+ testRunner.Given("a game started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Tile Head",
+                        "Tile Tail"});
+            table11.AddRow(new string[] {
+                        "0",
+                        "2"});
+            table11.AddRow(new string[] {
+                        "1",
+                        "5"});
+#line 122
+ testRunner.When("the player one has the next set of tiles", ((string)(null)), table11, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Tile Head",
+                        "Tile Tail"});
+            table12.AddRow(new string[] {
+                        "2",
+                        "2"});
+            table12.AddRow(new string[] {
+                        "0",
+                        "5"});
+            table12.AddRow(new string[] {
+                        "0",
+                        "0"});
+#line 126
+ testRunner.And("the player two has the next set of tiles", ((string)(null)), table12, "And ");
+#line 131
+ testRunner.And("the board has just the tile 6 in head and 6 in tail in the middle", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 132
+ testRunner.And("the stock is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 133
+ testRunner.And("the player doesnt has a tile to move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 134
+ testRunner.Then("the player 1 must win", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

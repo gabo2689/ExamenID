@@ -14,6 +14,7 @@ namespace ExamTest
         private readonly Player _player1 = new Player("Dennis");
         private readonly Player _player2 = new Player("Edward");
         Tile _tile;
+        private int _winner=-1;
 
         
 
@@ -102,9 +103,15 @@ namespace ExamTest
                 _game = new Game();
                 _game.AddNewPlayer(_player1);
                 _game.AddNewPlayer(_player2);
+            }
+
+            [Given(@"a started board")]
+            public void GivenAStartedBoard()
+            {
                 _game.Board.Tiles.ElementAt(10).Head = 2;
                 _game.Board.Tiles.ElementAt(10).Tail = 2;
             }
+
 
             [When(@"the player one move a tile to the board")]
             public void WhenThePlayerOneMoveATileToTheBoard()
@@ -119,7 +126,37 @@ namespace ExamTest
                 Assert.AreEqual(p0,_game.PlayerTurn+1);
             }
 
+
+            [When(@"the board has just the tile (.*) in head and (.*) in tail in the middle")]
+            public void WhenTheBoardHasJustTheTileInHeadAndInTailInTheMiddle(int p0, int p1)
+            {
+                _game.InitializeBoard();
+                _game.Board.Tiles.ElementAt(14).Head = p0;
+                _game.Board.Tiles.ElementAt(14).Tail = p1;
+            }
+
+            [When(@"the stock is empty")]
+            public void WhenTheStockIsEmpty()
+            {
+                _game.Stock.Tiles.Clear();
+            }
+
+
+            [When(@"the player doesnt has a tile to move")]
+            public void WhenThePlayerDoesntHasATileToMove()
+            {
+                var existMove=_game.VerifyIfGameHasMoreMoves();
+                if (!existMove)
+                    _winner = _game.GetWinner();
+            }
+
+
+
+            [Then(@"the player (.*) must win")]
+            public void ThenThePlayerMustWin(int p0)
+            {
+                Assert.AreEqual(p0,_winner);
+            }
         }
 
 }
-
