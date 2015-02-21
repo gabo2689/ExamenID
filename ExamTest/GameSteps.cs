@@ -23,8 +23,6 @@ namespace ExamTest
                 _game = new Game();
                 _game.AddNewPlayer(_player1);
                 _game.AddNewPlayer(_player2);
-
-
             }
 
         [When(@"the game begins and the players takes (.*) tiles")]
@@ -55,8 +53,6 @@ namespace ExamTest
     public void WhenThePlayerOneHasTheNextSetOfTiles(Table table)
             {
                 _game.GetPlayerAtPosition(0).Hand = TestUtility.ConvertTilesTableToListTiles(table);
-
-
             }
 
         [When(@"the player two has the next set of tiles the highest double")]

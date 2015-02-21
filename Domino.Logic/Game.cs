@@ -155,7 +155,7 @@ namespace Domino.Logic
         {
             PlayerTurn++;
             if (PlayerTurn > Players.Count)
-                PlayerTurn = 1;
+                PlayerTurn = 0;
         }
 
         public int GetPlayerInitial()
