@@ -1,13 +1,17 @@
-﻿using System;
+﻿using Autofac;
 using Domino.Logic;
+
+using Domino.Logic;
+
 using Domino.Logic.Interfaces;
+
+using Domino.Logic.Interfaces;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domino.Logic;
-using Autofac;
-using Domino.Logic.Interfaces;
 
 namespace Domino.Console
 {
@@ -16,7 +20,7 @@ namespace Domino.Console
         private static IContainer _container;
         public static IGame _game;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var HandPosition = 0;
             var BoardPosition = 0;
@@ -58,6 +62,7 @@ namespace Domino.Console
                 }
 
                 var winner = _game.GetWinner();
+                _game.SaveStatistics(winner);
             }
 
             /*IDatabase binary = new BinaryFile();
@@ -80,6 +85,7 @@ namespace Domino.Console
             System.Console.Write(Elias.PlayerName + " ah perdido " + Elias.Losses + " veces\n ");
             System.Console.Read();*/
         }
+
         public static void DrawBoard()
         {
             for (int i = 0; i < _game.Board.Tiles.Count(); i++)
@@ -103,7 +109,6 @@ namespace Domino.Console
 
         public static void DrawPlayersHand()
         {
-
             for (int i = 0; i < _game.Players.ElementAt(_game.PlayerTurn).Hand.Count; i++)
             {
                 System.Console.Write("| " + _game.Players.ElementAt(_game.PlayerTurn).Hand.ElementAt(i).Head + " |");
@@ -122,7 +127,6 @@ namespace Domino.Console
                 System.Console.Write("  " + i + "  ");
                 System.Console.Write("  ");
             }
-
         }
     }
 }

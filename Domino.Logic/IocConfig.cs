@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
 using Autofac.Core;
 using Domino.Logic;
 using Domino.Logic.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using IContainer = Autofac.IContainer;
 
 namespace Domino.Console
@@ -24,17 +23,13 @@ namespace Domino.Console
             builder.RegisterType<RandomNumber>().As<IRandom>();
             builder.RegisterType<Stock>().As<IStock>();
             builder.RegisterType<Board>().As<IBoard>();
+
             builder.RegisterType<BinaryFile>().As<IDatabase>();
             builder.RegisterType<PlayerGameStatistics>().As<IPlayerGameStatistics>();
             builder.RegisterType<Tile>().As<ITile>();
 
             IContainer con = builder.Build();
             return con;
-
         }
-
-        
     }
-
-
 }

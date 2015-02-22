@@ -23,12 +23,26 @@ namespace Domino.Logic
             InitCounterFile(filePlayerCounter);
         }
 
-        public void Save(List<PlayerGameStatistics> players)
+        public PlayerStatistics GetPlayerStatistics(string playerName)
+        {
+            Statistics.Clear();
+            FillAllPlayersStatistics();
+            return FindPlayer(playerName);
+        }
+
+        public List<PlayerStatistics> GetAllPlayerStatistics()
+        {
+            Statistics.Clear();
+            FillAllPlayersStatistics();
+            return Statistics;
+        }
+
+        public void Save(List<IPlayerGameStatistics> players)
         {
             if (IsEmpty())
             {
                 InitCounterToAmountPlayer(players.Count);
-                foreach (PlayerGameStatistics t in players)
+                foreach (IPlayerGameStatistics t in players)
                 {
                     GameWriter.Write(t.PlayerName);
                     if (t.IsWinner)
@@ -61,20 +75,6 @@ namespace Domino.Logic
             _streamGame.Flush();
             CounterWriter.Flush();
             _streamCounter.Flush();
-        }
-
-        public PlayerStatistics GetPlayerStatistics(string playerName)
-        {
-            Statistics.Clear();
-            FillAllPlayersStatistics();
-            return FindPlayer(playerName);
-        }
-
-        public List<PlayerStatistics> GetAllPlayerStatistics()
-        {
-            Statistics.Clear();
-            FillAllPlayersStatistics();
-            return Statistics;
         }
 
         private void AddNewPlayerCounterFile()

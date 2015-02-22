@@ -4,7 +4,7 @@ namespace Domino.Logic.Interfaces
 {
     public interface IDatabase
     {
-        void Save(List<PlayerGameStatistics> players);
+        void Save(List<IPlayerGameStatistics> players);
 
         PlayerStatistics GetPlayerStatistics(string playerName);
 
