@@ -17,7 +17,7 @@ namespace Domino.Logic
             Stock = new Stock(new RandomNumber());
             Stock.Shuffle(56);
             Players = new List<IPlayer>();
-            Database = new BinaryFile();
+
             InitializeBoard();
         }
 
@@ -318,6 +318,7 @@ namespace Domino.Logic
 
         public void SaveStatistics(int winner)
         {
+            Database = new BinaryFile();
             if (winner == -1) return;
             var gameStatistics = new List<IPlayerGameStatistics>();
             for (int i = 0; i < Players.Count; i++)
