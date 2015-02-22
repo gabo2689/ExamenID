@@ -86,11 +86,25 @@ namespace Domino.Logic
 
         public int GetWinner()
         {
-            if (Players.ElementAt(0).Hand.Count < Players.ElementAt(1).Hand.Count)
-                return 1;
-            if (Players.ElementAt(1).Hand.Count < Players.ElementAt(0).Hand.Count)
-                return 2;
-            return 0;
+            int highestNumber = -1;
+            int position = -1;
+            int EqualsCount = 0;
+
+            for (int i = 0; i < Players.Count; i++)
+            {
+                if (Players.ElementAt(i).Hand.Count>highestNumber)
+                {
+                    highestNumber = Players.ElementAt(i).Hand.Count;
+                    position = i;
+                }
+                else if (Players.ElementAt(i).Hand.Count == highestNumber)
+                {
+                    EqualsCount++;
+                }
+            }
+            if(EqualsCount==Players.Count-1)
+                return 0;
+            return position;
         }
 
         public bool VerifyMove(int positionHand, int positionBoard)
