@@ -6,15 +6,15 @@
 @mytagxs
 Scenario: When the player one get one tile from stock
 	Given the list from stock exist from board
-	|header | tail |
-	| 4      | 4    |
-	| 3      | 2    |
-	| 2      | 1    |
+	| Tile Head | Tile Tail | isDouble |
+	| 4         | 4         |   true   |
+	| 3         | 2         |   false  |
+	| 2         | 1         |   false  |
 	And the player get 1 tile from stock
 	Then remove 1 tile from stock
 	And  add 1 tile to player list
-	| header | tail |
-	| 3      | 0    |
-	| 5      | 2    |
-	| 4      | 1    |
+	| Tile Head | Tile Tail | isDouble |
+	| 3         | 0         |   false  |
+	| 5         | 2         |   false  |
+	| 4         | 1         |   false  |
 

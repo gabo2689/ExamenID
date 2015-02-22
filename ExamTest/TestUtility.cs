@@ -16,6 +16,5 @@ namespace ExamTest
             }
             return tiles;
         }
-
     }
 }
