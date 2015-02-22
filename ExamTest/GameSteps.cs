@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Domino.Logic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Win32;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace ExamTest
 {
@@ -116,6 +120,43 @@ namespace ExamTest
             {
                 Assert.AreEqual(p0,_game.PlayerTurn+1);
             }
+
+            [Given(@"is the turn of player one")]
+            public void GivenIsTheTurnOfPlayerOne()
+            {
+                _game=new Game();
+                _game.AddNewPlayer(_player1);
+                _game.AddNewPlayer(_player2);
+            }
+
+            [When(@"the board has the next set of tiles")]
+            public void WhenTheBoardHasTheNextSetOfTiles(Table table)
+            {
+                _game.Board.Tiles = TestUtility.ConvertTilesTableToListTiles(table).ToArray();
+            }
+
+            [When(@"the player has the next hand")]
+            public void WhenThePlayerHasTheNextHand(Table table)
+            {
+                _game.GetPlayerAtPosition(0).Hand = TestUtility.ConvertTilesTableToListTiles(table);
+            }
+
+        private Tile tile;
+            [When(@"the player place this tile on the board")]
+            public void WhenThePlayerPlaceThisTileOnTheBoard(Table table)
+            {
+                tile = table.CreateInstance<Tile>();
+                _game.GetPlayerAtPosition(0).PopTileAtIndex(0);
+                _game.Board.AddTile(7,tile);
+            }
+
+            [Then(@"the tiles on board must be")]
+            public void ThenTheTilesOnBoardMustBe(Table table)
+            {
+                var listOfTiles = table.CreateSet<Tile>().ToArray();
+                Assert.IsTrue(_game.Board.Tiles.Contains(tile));
+            }
+
 
         }
 

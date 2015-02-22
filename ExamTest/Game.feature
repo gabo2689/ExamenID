@@ -115,3 +115,34 @@ Scenario: The player1 move one tile to the board and then is the turn of the pla
 	| 2		    | 3			|
 	And the player one move a tile to the board 
 	Then is the turn of the player 2 
+
+
+	Scenario: When The player puts a Tile on the Board
+	Given is the turn of player one
+	When the board has the next set of tiles
+	| Tile Head | Tile Tail |
+	| 0		    | 1			|
+	| 0         | 6		    |
+	| 0			| 5			|
+	| 1		    | 3         |
+	| 5			| 6			|
+	| 0		    | 2 		|
+	| 1		    | 2 		|
+	And the player has the next hand
+	| Tile Head | Tile Tail |
+	| 6		    | 1			|
+	| 5         | 2		    |
+	| 0			| 5			|
+	And the player place this tile on the board
+	| Tile Head | Tile Tail |
+	| 6		    | 1			|
+	Then the tiles on board must be 
+	| Tile Head | Tile Tail |
+	| 0		    | 1			|
+	| 0         | 6		    |
+	| 0			| 5			|
+	| 1		    | 3         |
+	| 5			| 6			|
+	| 0		    | 2 		|
+	| 1		    | 2 		|
+	| 6		    | 1			|

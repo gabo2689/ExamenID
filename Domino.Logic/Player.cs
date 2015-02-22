@@ -50,5 +50,13 @@ namespace Domino.Logic
                 return higherTile;
             return sumTile;
         }
+
+        public Tile PopTileAtIndex(int index)
+        {
+            var tile = Hand.ElementAt(index);
+            Hand.RemoveAt(index);
+            return tile;
+
+        }
     }
 }
