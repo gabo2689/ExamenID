@@ -19,11 +19,12 @@ namespace Domino.Console
 
             //build.RegisterType<Board>().As<Ibo>()
             builder.RegisterType<Game>().As<IGame>();
-            builder.RegisterType<Player>().As<IPlayer>();
-            builder.RegisterType<Random>().As<IRandom>();
-            builder.RegisterType<Stock>().As<IStock>();
+            //builder.RegisterType<Player>().As<IPlayer>();
+            //builder.RegisterType<Random>().As<IRandom>();
+            //builder.RegisterType<Stock>().As<IStock>();
 
-            return builder.Build();
+            IContainer con = builder.Build();
+            return con;
 
         }
 
