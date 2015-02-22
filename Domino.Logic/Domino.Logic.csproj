@@ -39,13 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryFile.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="PlayerGameStatistics.cs" />
     <Compile Include="Interfaces\IGame.cs" />
+    <Compile Include="Interfaces\IDatabase.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Interfaces\IRandom.cs" />
     <Compile Include="Interfaces\IStock.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNumber.cs" />
     <Compile Include="Stock.cs" />

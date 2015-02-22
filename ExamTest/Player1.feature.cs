@@ -14,19 +14,19 @@
 namespace ExamTest
 {
     using TechTalk.SpecFlow;
-    
-    
+
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
     public partial class PlayerFeature
     {
-        
+
         private static TechTalk.SpecFlow.ITestRunner testRunner;
-        
+
 #line 1 "Player.feature"
 #line hidden
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
@@ -35,40 +35,40 @@ namespace ExamTest
                     "wo numbers", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
         public static void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
-            if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
+            if (((TechTalk.SpecFlow.FeatureContext.Current != null)
                         && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Player")))
             {
                 ExamTest.PlayerFeature.FeatureSetup(null);
             }
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
         }
-        
+
         public virtual void ScenarioSetup(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioStart(scenarioInfo);
         }
-        
+
         public virtual void ScenarioCleanup()
         {
             testRunner.CollectScenarioErrors();
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When the player one get one tile from stock")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Player")]
@@ -78,7 +78,7 @@ namespace ExamTest
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When the player one get one tile from stock", new string[] {
                         "mytagxs"});
 #line 7
-this.ScenarioSetup(scenarioInfo);
+            this.ScenarioSetup(scenarioInfo);
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "header",
@@ -93,11 +93,11 @@ this.ScenarioSetup(scenarioInfo);
                         "2",
                         "1"});
 #line 8
- testRunner.Given("the list from stock exist from board", ((string)(null)), table1, "Given ");
+            testRunner.Given("the list from stock exist from board", ((string)(null)), table1, "Given ");
 #line 13
- testRunner.And("the player get 1 tile from stock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            testRunner.And("the player get 1 tile from stock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 14
- testRunner.Then("remove 1 tile from stock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            testRunner.Then("remove 1 tile from stock", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "header",
@@ -112,7 +112,7 @@ this.ScenarioSetup(scenarioInfo);
                         "4",
                         "1"});
 #line 15
- testRunner.And("add 1 tile to player list", ((string)(null)), table2, "And ");
+            testRunner.And("add 1 tile to player list", ((string)(null)), table2, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

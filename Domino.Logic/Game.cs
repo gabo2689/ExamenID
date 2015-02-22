@@ -10,6 +10,7 @@ namespace Domino.Logic
     public class Game : IGame
     {
         private const int AmountOfPlayerTiles = 7;
+        private const int AmountOfGameTiles = 28;
         public List<IPlayer> Players { get; set; }
         public int PlayerTurn { get; set; }
         public Board Board { get; set; }
@@ -28,17 +29,19 @@ namespace Domino.Logic
             Board=new Board();
             Stock=new Stock(new RandomNumber());
             Players=new List<IPlayer>();
+            InitializeBoard();
         }
 
         public void AddNewPlayer(IPlayer newPlayer)
         {
             Players.Add(newPlayer);
+            InitializeTurns();
         }
 
         public void InitializePlayersHand(int amountOfTilesForEachPlayer)
         {
             foreach (var player in Players)
-            {
+            {   
                 for (var i = 0; i < amountOfTilesForEachPlayer; i++)
                 {
                     player.AddTileToHand(Stock.PopFromStock());
@@ -47,18 +50,25 @@ namespace Domino.Logic
             
         }
 
+        public void InitializeBoard()
+        {
+            Board.Initialize();
+            Board.AddTile(AmountOfGameTiles/2, Stock.PopFromStock());
+        }
+
         public int GetPlayerCount()
         {
             return Players.Count;
         }
 
-        public void ResetGame(IPlayer player)
+        public void ResetGame()
         {
             InitializePlayersHand(AmountOfPlayerTiles);
             InitializeTurns();
+            InitializeBoard();
         }
 
-        private void InitializeTurns()
+        public void InitializeTurns()
         {
 
             PlayerTurn = GetPlayerInitial();
@@ -69,10 +79,33 @@ namespace Domino.Logic
         {
             if (VerifyMove(positionHand, positionBoard))
             {
-                Board.AddTile(positionBoard, Players.ElementAt(PlayerTurn - 1).Hand.ElementAt(positionHand));
-                Players.ElementAt(PlayerTurn - 1).Hand.RemoveAt(positionHand);
+                Board.AddTile(positionBoard, Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand));
+                Players.ElementAt(PlayerTurn).Hand.RemoveAt(positionHand);
                 NextPlayerTurn();
             }
+        }
+
+        public int GetWinner()
+        {
+            int highestNumber = -1;
+            int position = -1;
+            int EqualsCount = 0;
+
+            for (int i = 0; i < Players.Count; i++)
+            {
+                if (Players.ElementAt(i).Hand.Count>highestNumber)
+                {
+                    highestNumber = Players.ElementAt(i).Hand.Count;
+                    position = i;
+                }
+                else if (Players.ElementAt(i).Hand.Count == highestNumber)
+                {
+                    EqualsCount++;
+                }
+            }
+            if(EqualsCount==Players.Count-1)
+                return 0;
+            return position;
         }
 
         public bool VerifyMove(int positionHand, int positionBoard)
@@ -150,12 +183,58 @@ namespace Domino.Logic
             return move;
         }
 
+        public bool VerifyPlayerHand()
+        {
+            for (var i = 0; i < Board.Tiles.Length; i++)
+            {
+                if (Board.Tiles.ElementAt(i).Head != -1)
+                {
+                    for (var j = 0; j < Players.ElementAt(PlayerTurn).Hand.Count; j++)
+                    {
+                        if (!Board.Tiles.ElementAt(i).HeadTaked &&
+                            (Board.Tiles.ElementAt(i).Head ==
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(j).Head ||
+                             Board.Tiles.ElementAt(i).Head ==
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(j).Tail))
+                        {
+                            return true;
+                        }
+                        if (!Board.Tiles.ElementAt(i).TailTaked &&
+                            (Board.Tiles.ElementAt(i).Tail ==
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(j).Head ||
+                             Board.Tiles.ElementAt(i).Tail ==
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(j).Tail))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool VerifyIfGameHasMoreMoves()
+        {
+            var turn = PlayerTurn;
+            var playershasMoveCount = 0;
+            for (int i = 0; i < Players.Count; i++)
+            {
+                PlayerTurn = i;
+                if (VerifyPlayerHand())
+                    playershasMoveCount++;
+            }
+            PlayerTurn = turn;
+            if (playershasMoveCount == 0)
+                return false;
+
+            return true;
+        }
 
         private void NextPlayerTurn()
         {
             PlayerTurn++;
-            if (PlayerTurn > Players.Count)
-                PlayerTurn = 1;
+            if (PlayerTurn > Players.Count-1)
+                PlayerTurn = 0;
         }
 
         public int GetPlayerInitial()

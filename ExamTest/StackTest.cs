@@ -36,7 +36,7 @@ namespace ExamTest
 
             random.Stub(x => x.GetRandomPosition()).Do((randomFunction));
 
-            //_stock = new Stock(random, TestUtility.ConvertTilesTableToListTiles(table));
+            _stock = new Stock(random, TestUtility.ConvertTilesTableToListTiles(table));
         }
 
         [When(@"Randoms tiles are generated")]
