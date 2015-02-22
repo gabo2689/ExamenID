@@ -230,7 +230,7 @@ namespace Domino.Logic
             return true;
         }
 
-        private void NextPlayerTurn()
+        public void NextPlayerTurn()
         {
             PlayerTurn++;
             if (PlayerTurn > Players.Count-1)

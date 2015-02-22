@@ -1,8 +1,9 @@
 ﻿using System;
+using Domino.Logic.Interfaces;
 
 namespace Domino.Logic
 {
-    public class Tile
+    public class Tile : ITile
     {
         public Tile(int tileHead, int tileTail)
         {

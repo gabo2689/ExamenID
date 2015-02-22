@@ -1,6 +1,8 @@
+using Domino.Logic.Interfaces;
+
 namespace Domino.Logic
 {
-    public class PlayerGameStatistics
+    public class PlayerGameStatistics : IPlayerGameStatistics
     {
         public PlayerGameStatistics(string playerName, bool isWinner)
         {

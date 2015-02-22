@@ -9,5 +9,6 @@ namespace Domino.Logic.Interfaces
         int Points { set; get; }
         void AddTileToHand(Tile tile);
         Tile GetHighestDouble();
+        Tile PopTileAtIndex(int index);
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domino.Logic.Interfaces;
 
 namespace Domino.Logic
 {
-    public class Board
+    public class Board : IBoard
     {
         public static int AmountTiles = 28;
         public Tile[] Tiles = new Tile[AmountTiles];
