@@ -28,6 +28,7 @@ namespace Domino.Logic
             var random = new Random();
             Board=new Board();
             Stock=new Stock(new RandomNumber());
+            Stock.Shuffle(56);
             Players=new List<IPlayer>();
             InitializeBoard();
         }

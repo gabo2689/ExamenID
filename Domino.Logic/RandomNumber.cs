@@ -9,9 +9,11 @@ namespace Domino.Logic
 {
     class RandomNumber : IRandom
     {
+        private Random _random = new Random();
         public int GetRandomPosition()
         {
-            return 0;
+           
+            return _random.Next(0, 27);
         }
 
         public List<Tile> ShufflePit(List<Tile> pitContainer)

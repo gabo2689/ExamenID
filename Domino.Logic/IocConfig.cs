@@ -21,7 +21,7 @@ namespace Domino.Console
 
             builder.RegisterType<Game>().As<IGame>();
             builder.RegisterType<Player>().As<IPlayer>();
-            builder.RegisterType<Random>().As<IRandom>();
+            builder.RegisterType<RandomNumber>().As<IRandom>();
             builder.RegisterType<Stock>().As<IStock>();
             builder.RegisterType<Board>().As<IBoard>();
             builder.RegisterType<BinaryFile>().As<IDatabase>();
