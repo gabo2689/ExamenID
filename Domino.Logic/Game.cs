@@ -119,13 +119,19 @@ namespace Domino.Logic
                 if (positionBoard == 27)
                 {
                     if (Board.Tiles[positionBoard - 1].Head ==
-                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail)
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail &&
+                        !Board.Tiles[positionBoard - 1].HeadTaked)
+                    {
                         Board.Tiles[positionBoard - 1].HeadTaked = true;
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).TailTaked = true;
+                    }
                     else if (Board.Tiles[positionBoard - 1].Head ==
-                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head)
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head &&
+                             !Board.Tiles[positionBoard - 1].HeadTaked)
                     {
                         Board.Tiles[positionBoard - 1].HeadTaked = true;
                         Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Swap();
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).TailTaked = true;
                     }
                     else
                         move = false;
@@ -133,13 +139,19 @@ namespace Domino.Logic
                 else if (positionBoard == 0)
                 {
                     if (Board.Tiles[positionBoard + 1].Tail ==
-                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head)
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head &&
+                        !Board.Tiles[positionBoard + 1].TailTaked)
+                    {
                         Board.Tiles[positionBoard + 1].TailTaked = true;
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).HeadTaked = true;
+                    }
                     else if (Board.Tiles[positionBoard + 1].Tail ==
-                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail)
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail &&
+                             !Board.Tiles[positionBoard + 1].TailTaked)
                     {
                         Board.Tiles[positionBoard + 1].TailTaked = true;
                         Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Swap();
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).HeadTaked = true;
                     }
                     else
                         move = false;
@@ -147,40 +159,64 @@ namespace Domino.Logic
                 else if (positionBoard > 0 && positionBoard < 27)
                 {
                     if (Board.Tiles[positionBoard - 1].Head ==
-                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail)
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail &&
+                        !Board.Tiles[positionBoard - 1].HeadTaked)
+                    {
                         Board.Tiles[positionBoard - 1].HeadTaked = true;
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).TailTaked = true;
+                    }
                     else if (Board.Tiles[positionBoard - 1].Tail ==
-                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head)
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head &&
+                             !Board.Tiles[positionBoard - 1].TailTaked)
+                    {
                         Board.Tiles[positionBoard - 1].TailTaked = true;
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).HeadTaked = true;
+                    }
                     else if (Board.Tiles[positionBoard + 1].Tail ==
-                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head)
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head &&
+                             !Board.Tiles[positionBoard + 1].TailTaked)
+                    {
                         Board.Tiles[positionBoard + 1].TailTaked = true;
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).HeadTaked = true;
+                    }
                     else if (Board.Tiles[positionBoard + 1].Head ==
-                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail)
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail &&
+                             !Board.Tiles[positionBoard + 1].HeadTaked)
+                    {
                         Board.Tiles[positionBoard + 1].HeadTaked = true;
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).TailTaked = true;
+                    }
                     else if (Board.Tiles[positionBoard - 1].Head ==
-                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head)
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head &&
+                             !Board.Tiles[positionBoard - 1].HeadTaked)
                     {
                         Board.Tiles[positionBoard - 1].HeadTaked = true;
                         Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Swap();
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).TailTaked = true;
                     }
                     else if (Board.Tiles[positionBoard + 1].Tail ==
-                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail)
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail &&
+                             !Board.Tiles[positionBoard + 1].TailTaked)
                     {
                         Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Swap();
                         Board.Tiles[positionBoard + 1].TailTaked = true;
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).HeadTaked = true;
                     }
                     else if (Board.Tiles[positionBoard + 1].Head ==
-                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head)
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Head &&
+                             !Board.Tiles[positionBoard + 1].HeadTaked)
                     {
                         Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Swap();
                         Board.Tiles[positionBoard + 1].HeadTaked = true;
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).TailTaked = true;
                     }
                     else if (Board.Tiles[positionBoard - 1].Tail ==
-                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail)
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Tail &&
+                             !Board.Tiles[positionBoard - 1].TailTaked)
                     {
                         Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).Swap();
                         Board.Tiles[positionBoard - 1].TailTaked = true;
+                        Players.ElementAt(PlayerTurn).Hand.ElementAt(positionHand).HeadTaked = true;
                     }
                     else
                         move = false;

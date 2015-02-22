@@ -27,7 +27,7 @@ namespace Domino.Console
             _container = IocConfig.RegisterDependences();
 
             _game = _container.Resolve<IGame>();
-            var continueGame = false;
+            var continueGame = true;
 
             System.Console.WriteLine("Nombre del Player1? :  ");
 
@@ -35,8 +35,9 @@ namespace Domino.Console
             System.Console.WriteLine("Nombre del Player2? : ");
             _game.AddNewPlayer(new Player(System.Console.ReadLine()));
             _game.ResetGame();
+            
 
-            while (!continueGame)
+            while (continueGame)
             {
                 System.Console.Clear();
                 DrawBoard();
@@ -53,18 +54,30 @@ namespace Domino.Console
                     BoardPosition = Convert.ToInt32(System.Console.ReadLine());
                     _game.Move(HandPosition, BoardPosition);
                 }
+                else if (!_game.VerifyIfGameHasMoreMoves() && _game.Stock.Tiles.Count==0)
+                {
+                    continueGame = false;
+                }
                 else
                 {
                     if (_game.Stock.Tiles.Count != 0)
-                        _game.Players.ElementAt(_game.PlayerTurn).AddTileToHand(_game.Stock.PopFromStock());
+                    {
+                        while (_game.Stock.Tiles.Count != 0 && !_game.VerifyPlayerHand())
+                        {
+                            _game.Players.ElementAt(_game.PlayerTurn).AddTileToHand(_game.Stock.PopFromStock());
+                        }
+                        
+                    }
+                    
                     else
                         continueGame = false;
                 }
-
-                var winner = _game.GetWinner();
-                _game.SaveStatistics(winner);
             }
-
+            var winner = _game.GetWinner();
+            _game.SaveStatistics(winner);
+            System.Console.Clear();
+            System.Console.WriteLine("El ganador es: "+_game.Players.ElementAt(winner).Name);
+            System.Console.ReadKey();
             /*IDatabase binary = new BinaryFile();
             binary.Save(new List<PlayerGameStatistics>
             {
