@@ -117,7 +117,8 @@ Scenario: The player1 move one tile to the board and then is the turn of the pla
 	And the player one move a tile to the board 
 	Then is the turn of the player 2 
 
-	Scenario: When Player one doesnt have compatible tile and he has less tiles than the Player two and the stock isEmpty he win
+
+	Scenario: When Player one doesn't  have compatible tile and he has less tiles than the Player two and the stock isEmpty he win
 	Given a game started 
 	When the player one has the next set of tiles
 	| Tile Head | Tile Tail |
@@ -132,3 +133,17 @@ Scenario: The player1 move one tile to the board and then is the turn of the pla
 	And  the stock is empty
 	And the player doesnt has a tile to move
 	Then the player 1 must win 
+
+	
+	Scenario: As player one gets the last tile in the trablero with this wins the game
+	Given the tiles list on the  board
+	When Player One has the following tiles   
+	| Tile Head | Tile Tail |
+	| 1		    | 5 		|
+	And Player two has the following tiles
+	| Tile Head | Tile Tail |
+	| 2         | 2			|
+	| 0         | 5		    |
+	And the turn is the player 1
+	And Player one puts his latest tile on the board
+	Then player 1 wins the game
