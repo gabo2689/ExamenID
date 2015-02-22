@@ -29,12 +29,13 @@ namespace Domino.Logic
             Board=new Board();
             Stock=new Stock(new RandomNumber());
             Players=new List<IPlayer>();
-            ResetGame();
+            InitializeBoard();
         }
 
         public void AddNewPlayer(IPlayer newPlayer)
         {
             Players.Add(newPlayer);
+            InitializeTurns();
         }
 
         public void InitializePlayersHand(int amountOfTilesForEachPlayer)
@@ -67,7 +68,7 @@ namespace Domino.Logic
             InitializeBoard();
         }
 
-        private void InitializeTurns()
+        public void InitializeTurns()
         {
 
             PlayerTurn = GetPlayerInitial();
@@ -232,7 +233,7 @@ namespace Domino.Logic
         private void NextPlayerTurn()
         {
             PlayerTurn++;
-            if (PlayerTurn > Players.Count)
+            if (PlayerTurn > Players.Count-1)
                 PlayerTurn = 0;
         }
 

@@ -24,13 +24,13 @@ namespace ExamTest
         private int _numberOfTilesInThePlayerHand = 0;
 
         [Given(@"the players have an empty hand")]
-    public void GivenThePlayersHaveAnEmptyHand()
-            {
-                _game = new Game();
-                _game.AddNewPlayer(_player1);
-                _game.AddNewPlayer(_player2);
-            }
 
+        public void GivenThePlayersHaveAnEmptyHand()
+        {
+            _game = new Game();
+            _game.AddNewPlayer(_player1);
+            _game.AddNewPlayer(_player2);
+        }
 
         [When(@"the game begins and the players takes (.*) tiles")]
         public void WhenTheGameBeginsAndThePlayersTakesTiles(int p0)
@@ -59,6 +59,7 @@ namespace ExamTest
         public void WhenThePlayerOneHasTheNextSetOfTiles(Table table)
         {
             _game.GetPlayerAtPosition(0).Hand = TestUtility.ConvertTilesTableToListTiles(table);
+            _game.InitializeTurns();
         }
 
         [When(@"the player two has the next set of tiles the highest double")]
@@ -66,6 +67,7 @@ namespace ExamTest
                 (Table table)
         {
             _game.GetPlayerAtPosition(1).Hand = TestUtility.ConvertTilesTableToListTiles(table);
+
         }
 
         [Then(@"the player ""(.*)"" has to start the game")]
@@ -78,6 +80,7 @@ namespace ExamTest
         public void WhenThePlayerTwoHasTheNextSetOfTiles(Table table)
         {
             _game.GetPlayerAtPosition(1).Hand = TestUtility.ConvertTilesTableToListTiles(table);
+            _game.InitializeTurns();
         }
 
         [Given(@"a tile with (.*) in head  and (.*) in tail")]
@@ -123,7 +126,7 @@ namespace ExamTest
         [Then(@"is the turn of the player (.*)")]
         public void ThenIsTheTurnOfThePlayer(int p0)
         {
-            Assert.AreEqual(p0, _game.PlayerTurn = 1);
+            Assert.AreEqual(p0, _game.PlayerTurn+1);
         }
 
         [When(@"the board has just the tile (.*) in head and (.*) in tail in the middle")]
