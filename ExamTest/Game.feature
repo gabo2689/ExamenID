@@ -95,6 +95,7 @@ Scenario: When we put a tile, the tile can swap if needed
 
 Scenario: The player1 move one tile to the board and then is the turn of the player2
 	Given a game started 
+	And  a started board
 	When the player one has the next set of tiles
 	| Tile Head | Tile Tail |
 	| 0		    | 1			|
@@ -128,21 +129,37 @@ Scenario: The player1 move one tile to the board and then is the turn of the pla
 	| 5			| 6			|
 	| 0		    | 2 		|
 	| 1		    | 2 		|
-	And the player has the next hand
+	And the player place a tile on the board
+	Then the tiles on board must increase by 1
+	And the tiles on the hand of the player must decrease by 1
+
+
+	Scenario: When Player one doesn't  have compatible tile and he has less tiles than the Player two and the stock isEmpty he win
+	Given a game started 
+	When the player one has the next set of tiles
 	| Tile Head | Tile Tail |
-	| 6		    | 1			|
-	| 5         | 2		    |
-	| 0			| 5			|
-	And the player place this tile on the board
+	| 0         | 2	        |
+	| 1		    | 5 		|
+	And the player two has the next set of tiles
 	| Tile Head | Tile Tail |
-	| 6		    | 1			|
-	Then the tiles on board must be 
+	| 2         | 2			|
+	| 0         | 5		    |
+	| 0		    | 0			|
+	And the board has just the tile 6 in head and 6 in tail in the middle
+	And  the stock is empty
+	And the player doesnt has a tile to move
+	Then the player 1 must win 
+
+	
+	Scenario: As player one gets the last tile in the trablero with this wins the game
+	Given the tiles list on the  board
+	When Player One has the following tiles   
 	| Tile Head | Tile Tail |
-	| 0		    | 1			|
-	| 0         | 6		    |
-	| 0			| 5			|
-	| 1		    | 3         |
-	| 5			| 6			|
-	| 0		    | 2 		|
-	| 1		    | 2 		|
-	| 6		    | 1			|
+	| 1		    | 5 		|
+	And Player two has the following tiles
+	| Tile Head | Tile Tail |
+	| 2         | 2			|
+	| 0         | 5		    |
+	And the turn is the player 1
+	And Player one puts his latest tile on the board
+	Then player 1 wins the game

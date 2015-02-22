@@ -84,6 +84,29 @@ namespace Domino.Logic
             }
         }
 
+        public int GetWinner()
+        {
+            int highestNumber = -1;
+            int position = -1;
+            int EqualsCount = 0;
+
+            for (int i = 0; i < Players.Count; i++)
+            {
+                if (Players.ElementAt(i).Hand.Count>highestNumber)
+                {
+                    highestNumber = Players.ElementAt(i).Hand.Count;
+                    position = i;
+                }
+                else if (Players.ElementAt(i).Hand.Count == highestNumber)
+                {
+                    EqualsCount++;
+                }
+            }
+            if(EqualsCount==Players.Count-1)
+                return 0;
+            return position;
+        }
+
         public bool VerifyMove(int positionHand, int positionBoard)
         {
             var move = true;
@@ -159,6 +182,52 @@ namespace Domino.Logic
             return move;
         }
 
+        public bool VerifyPlayerHand()
+        {
+            for (var i = 0; i < Board.Tiles.Length; i++)
+            {
+                if (Board.Tiles.ElementAt(i).Head != -1)
+                {
+                    for (var j = 0; j < Players.ElementAt(PlayerTurn).Hand.Count; j++)
+                    {
+                        if (!Board.Tiles.ElementAt(i).HeadTaked &&
+                            (Board.Tiles.ElementAt(i).Head ==
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(j).Head ||
+                             Board.Tiles.ElementAt(i).Head ==
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(j).Tail))
+                        {
+                            return true;
+                        }
+                        if (!Board.Tiles.ElementAt(i).TailTaked &&
+                            (Board.Tiles.ElementAt(i).Tail ==
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(j).Head ||
+                             Board.Tiles.ElementAt(i).Tail ==
+                             Players.ElementAt(PlayerTurn).Hand.ElementAt(j).Tail))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool VerifyIfGameHasMoreMoves()
+        {
+            var turn = PlayerTurn;
+            var playershasMoveCount = 0;
+            for (int i = 0; i < Players.Count; i++)
+            {
+                PlayerTurn = i;
+                if (VerifyPlayerHand())
+                    playershasMoveCount++;
+            }
+            PlayerTurn = turn;
+            if (playershasMoveCount == 0)
+                return false;
+
+            return true;
+        }
 
         private void NextPlayerTurn()
         {

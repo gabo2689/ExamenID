@@ -379,6 +379,8 @@ this.ScenarioSetup(scenarioInfo);
 this.ScenarioSetup(scenarioInfo);
 #line 97
  testRunner.Given("a game started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 98
+ testRunner.And("a started board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tile Head",
@@ -404,7 +406,7 @@ this.ScenarioSetup(scenarioInfo);
             table9.AddRow(new string[] {
                         "1",
                         "2"});
-#line 98
+#line 99
  testRunner.When("the player one has the next set of tiles", ((string)(null)), table9, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
@@ -431,11 +433,11 @@ this.ScenarioSetup(scenarioInfo);
             table10.AddRow(new string[] {
                         "2",
                         "3"});
-#line 107
+#line 108
  testRunner.And("the player two has the next set of tiles", ((string)(null)), table10, "And ");
-#line 116
- testRunner.And("the player one move a tile to the board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 117
+ testRunner.And("the player one move a tile to the board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 118
  testRunner.Then("is the turn of the player 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -447,9 +449,9 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void WhenThePlayerPutsATileOnTheBoard()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When The player puts a Tile on the Board", ((string[])(null)));
-#line 120
- this.ScenarioSetup(scenarioInfo);
 #line 121
+ this.ScenarioSetup(scenarioInfo);
+#line 122
  testRunner.Given("is the turn of player one", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -476,62 +478,106 @@ this.ScenarioSetup(scenarioInfo);
             table11.AddRow(new string[] {
                         "1",
                         "2"});
-#line 122
+#line 123
  testRunner.When("the board has the next set of tiles", ((string)(null)), table11, "When ");
+#line 132
+ testRunner.And("the player place a tile on the board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 133
+ testRunner.Then("the tiles on board must increase by 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 134
+ testRunner.And("the tiles on the hand of the player must decrease by 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("When Player one doesn\'t  have compatible tile and he has less tiles than the Play" +
+            "er two and the stock isEmpty he win")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        public virtual void WhenPlayerOneDoesnTHaveCompatibleTileAndHeHasLessTilesThanThePlayerTwoAndTheStockIsEmptyHeWin()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("When Player one doesn\'t  have compatible tile and he has less tiles than the Play" +
+                    "er two and the stock isEmpty he win", ((string[])(null)));
+#line 137
+ this.ScenarioSetup(scenarioInfo);
+#line 138
+ testRunner.Given("a game started", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tile Head",
                         "Tile Tail"});
             table12.AddRow(new string[] {
-                        "6",
-                        "1"});
-            table12.AddRow(new string[] {
-                        "5",
+                        "0",
                         "2"});
             table12.AddRow(new string[] {
-                        "0",
+                        "1",
                         "5"});
-#line 131
- testRunner.And("the player has the next hand", ((string)(null)), table12, "And ");
+#line 139
+ testRunner.When("the player one has the next set of tiles", ((string)(null)), table12, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tile Head",
                         "Tile Tail"});
             table13.AddRow(new string[] {
-                        "6",
-                        "1"});
-#line 136
- testRunner.And("the player place this tile on the board", ((string)(null)), table13, "And ");
+                        "2",
+                        "2"});
+            table13.AddRow(new string[] {
+                        "0",
+                        "5"});
+            table13.AddRow(new string[] {
+                        "0",
+                        "0"});
+#line 143
+ testRunner.And("the player two has the next set of tiles", ((string)(null)), table13, "And ");
+#line 148
+ testRunner.And("the board has just the tile 6 in head and 6 in tail in the middle", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 149
+ testRunner.And("the stock is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 150
+ testRunner.And("the player doesnt has a tile to move", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 151
+ testRunner.Then("the player 1 must win", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("As player one gets the last tile in the trablero with this wins the game")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Game")]
+        public virtual void AsPlayerOneGetsTheLastTileInTheTrableroWithThisWinsTheGame()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As player one gets the last tile in the trablero with this wins the game", ((string[])(null)));
+#line 154
+ this.ScenarioSetup(scenarioInfo);
+#line 155
+ testRunner.Given("the tiles list on the  board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "Tile Head",
                         "Tile Tail"});
             table14.AddRow(new string[] {
-                        "0",
-                        "1"});
-            table14.AddRow(new string[] {
-                        "0",
-                        "6"});
-            table14.AddRow(new string[] {
+                        "1",
+                        "5"});
+#line 156
+ testRunner.When("Player One has the following tiles", ((string)(null)), table14, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Tile Head",
+                        "Tile Tail"});
+            table15.AddRow(new string[] {
+                        "2",
+                        "2"});
+            table15.AddRow(new string[] {
                         "0",
                         "5"});
-            table14.AddRow(new string[] {
-                        "1",
-                        "3"});
-            table14.AddRow(new string[] {
-                        "5",
-                        "6"});
-            table14.AddRow(new string[] {
-                        "0",
-                        "2"});
-            table14.AddRow(new string[] {
-                        "1",
-                        "2"});
-            table14.AddRow(new string[] {
-                        "6",
-                        "1"});
-#line 139
- testRunner.Then("the tiles on board must be", ((string)(null)), table14, "Then ");
+#line 159
+ testRunner.And("Player two has the following tiles", ((string)(null)), table15, "And ");
+#line 163
+ testRunner.And("the turn is the player 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 164
+ testRunner.And("Player one puts his latest tile on the board", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 165
+ testRunner.Then("player 1 wins the game", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
